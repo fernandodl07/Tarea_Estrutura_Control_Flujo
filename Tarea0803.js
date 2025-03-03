@@ -18,12 +18,11 @@ DE STANDS QUE SOLICITÓ.
 let opcion
 	do {
 	    opcion = prompt(`
-	        Escoja una opción para continuar
-	            1. REGISTRO DE VENTAS
-	            2. CONVERSIÓN DE DIVISAS
-	            3. CÁLCULO DE INTERÉSES
-	            0. Salir
-	    `);
+            Escoja una opción para continuar
+                1. REGISTRO DE VENTAS
+                2. CONVERSIÓN DE DIVISAS
+                3. CÁLCULO DE INTERÉSES
+                0. Salir`);
 
 	    switch (opcion) {
 	        case `1`:
@@ -44,11 +43,11 @@ let opcion
 	        	const EuroQuet = 8.02
 	        	let conversion = 0
 
-	        	
+
 	        	let opcion2 = parseInt(prompt(`
-	        		Ingrese la moneda que desea ingresar:
-	        		1:dolar a quezal 
-	        		2: Euro a quezal`
+                    Ingrese la moneda que desea ingresar:
+                    1: Dolar a quezal 
+                    2: Euro a quezal`
 	        		))
 	        	let monto
 
@@ -67,13 +66,32 @@ let opcion
 	            break
 
 	        case `3`:
-	            console.log("pendiente x2")
+	        	const precioStands = 300
+	        	const interesDiario = 0.02;
+	            let cantidad = parseInt(prompt(`Ingrese la cantidad de stands que desea alquilar`))
+	            let dias = parseInt(prompt(`Ingrese la cantidad de dias que transcurrio de la entrega de los stands`))
+	            let subTotal
+	            let total_3
+	            let interes
+
+	            if (dias > 2) {
+	            	diasMora = dias - 2
+	            	subTotal = precioStands * cantidad
+	            	interes = subTotal * (Math.pow((1 + interesDiario), diasMora) - 1)
+	            	total_3 = subTotal + interes
+	            	console.log(`El total dal que tiene que pagar con intereses es de: ${total_3.toFixed(2)}`)
+	            }else{
+	            	total_3 = precioStands * cantidad
+	            	console.log(`El total dal que tiene que pagar es de: ${total_3}`)
+	            }
+
+	            console.log("Regresando al menú principal")
 	            break
 	        case `0`:
-	        	console.log("Bye")
+	        	console.log("Fin del programa")
 	        break
 	        default:
 	            alert('Ingrese una opcion valida')
-	            break
+	        break
 	    }
 	} while (opcion !== `0`)
